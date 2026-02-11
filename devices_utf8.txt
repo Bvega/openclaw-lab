@@ -1,0 +1,24 @@
+﻿
+Interface: 192.168.254.84 --- 0x11
+  Internet Address      Physical Address      Type
+  192.168.254.67        8c-ea-48-ab-99-08     dynamic   
+  192.168.254.79        00-08-9b-c4-c4-2e     dynamic   
+  192.168.254.95        68-57-2d-a5-1f-94     dynamic   
+  192.168.254.98        78-e1-03-d2-92-cc     dynamic   
+  192.168.254.102       9c-1c-37-7a-de-04     dynamic   
+  192.168.254.108       b0-f2-f6-47-7e-f7     dynamic   
+  192.168.254.116       5a-80-48-1e-6b-0f     dynamic   
+  192.168.254.118       12-de-87-56-12-98     dynamic   
+  192.168.254.119       f4-a9-97-d3-17-9b     dynamic   
+  192.168.254.254       10-78-5b-8d-68-10     dynamic   
+  192.168.254.255       ff-ff-ff-ff-ff-ff     static    
+  224.0.0.2             01-00-5e-00-00-02     static    
+  224.0.0.7             01-00-5e-00-00-07     static    
+  224.0.0.22            01-00-5e-00-00-16     static    
+  224.0.0.251           01-00-5e-00-00-fb     static    
+  224.0.0.252           01-00-5e-00-00-fc     static    
+  224.0.1.187           01-00-5e-00-01-bb     static    
+  225.30.7.13           01-00-5e-1e-07-0d     static    
+  239.255.102.18        01-00-5e-7f-66-12     static    
+  239.255.255.250       01-00-5e-7f-ff-fa     static    
+  255.255.255.255       ff-ff-ff-ff-ff-ff     static    

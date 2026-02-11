@@ -27,15 +27,22 @@ This repository documents the setup, configuration, and custom scripts for my ho
 
 ## Getting Started
 
-1.  **Clone the repository**:
-    ```bash
-    git clone <your-repo-url>
-    ```
+1.  **Repository Setup**:
+    *   The OpenClaw repository is cloned locally in `./openclaw`.
+    *   To keep it updated: `cd openclaw && git pull`
 
-2.  **Configuration**:
+2.  **SSH Access (Control Center to Brain)**:
+    *   An SSH key pair has been generated in `ssh_keys/`.
+    *   **Action Required**: Append the content of `ssh_keys/id_ed25519.pub` to `~/.ssh/authorized_keys` on the Mac Mini (`192.168.254.117`).
+    *   **Connect**:
+        ```bash
+        ssh -i ssh_keys/id_ed25519 user@192.168.254.117
+        ```
+
+3.  **Configuration**:
     *   Copy `.env.example` to `.env` (if applicable) and fill in your API keys.
 
 ## Useful Commands
 
-*   **Connect to Mac Mini**: `ssh user@192.168.254.117` (Requires SSH setup)
+*   **Connect to Mac Mini**: `ssh -i ssh_keys/id_ed25519 user@192.168.254.117`
 *   **Access OpenClaw Dashboard**: `http://192.168.254.117:18789`
