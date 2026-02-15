@@ -25,8 +25,7 @@ This repository documents the setup, configuration, and custom scripts for my ho
 *   **Type**: Local Ethernet LAN
 *   **Subnet**: 192.168.254.x (Assumed based on Mac IP)
 
-## Getting Started
-
+antigravity
 1.  **Repository Setup**:
     *   The OpenClaw repository is cloned locally in `./openclaw`.
     *   To keep it updated: `cd openclaw && git pull`
@@ -36,13 +35,31 @@ This repository documents the setup, configuration, and custom scripts for my ho
     *   **Action Required**: Append the content of `ssh_keys/id_ed25519.pub` to `~/.ssh/authorized_keys` on the Mac Mini (`192.168.254.117`).
     *   **Connect**:
         ```bash
-        ssh -i ssh_keys/id_ed25519 user@192.168.254.117
+        ssh -i ssh_keys/id_ed25519 miniboli@192.168.254.117
         ```
 
 3.  **Configuration**:
     *   Copy `.env.example` to `.env` (if applicable) and fill in your API keys.
 
+## Installation Log (Fresh Start - 2026-02-14)
+
+### 1. Cleanup
+*   Removed existing `openclaw` directory.
+*   Stopped all old Node processes (`pm2`, `node`).
+*   Verified clean state.
+
+### 2. Dependencies & Build
+*   Installed global tools: `npm install -g pnpm pm2`
+*   Cloned fresh repository: `git clone https://github.com/openclaw/openclaw.git openclaw`
+*   Installed dependencies: `cd openclaw && pnpm install`
+*   Built the project: `pnpm ui:build && pnpm build` (This ensures the UI and backend are compiled).
+
+### 3. Verification
+*   Started gateway: `pm2 start scripts/run-node.mjs --name openclaw -- gateway --port 18789 --verbose`
+*   Verified listening port: `lsof -i :18789` (shows `node` listening).
+*   Logs check: verified `~/.pm2/logs/openclaw-error.log` and `openclaw-out.log`.
+
 ## Useful Commands
 
-*   **Connect to Mac Mini**: `ssh -i ssh_keys/id_ed25519 user@192.168.254.117`
+*   **Connect to Mac Mini**: `ssh -i ssh_keys/id_ed25519 miniboli@192.168.254.117`
 *   **Access OpenClaw Dashboard**: `http://192.168.254.117:18789`
