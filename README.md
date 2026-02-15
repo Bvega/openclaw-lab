@@ -59,6 +59,40 @@ antigravity
 *   Verified listening port: `lsof -i :18789` (shows `node` listening).
 *   Logs check: verified `~/.pm2/logs/openclaw-error.log` and `openclaw-out.log`.
 
+## Testing / Verification Guide
+
+To interact with your Mac Mini (Brain) from your Windows Laptop (Control Center), follow these steps:
+
+### 1. Establish Secure Connection (SSH Tunnel)
+The OpenClaw Gateway listens on `localhost:18789` on the Mac Mini for security. To access it from Windows, create an SSH tunnel.
+
+Run this in a separate terminal window (and keep it open):
+```powershell
+ssh -N -L 18789:localhost:18789 -i ssh_keys/id_ed25519 miniboli@192.168.254.117
+```
+*(This forwards your local Windows port 18789 to the Mac Mini's port 18789)*
+
+### 2. Configure Local Client (Windows)
+Ensure your local CLI uses the same authentication token as the server.
+1.  Install the CLI globally (if not already):
+    ```powershell
+    npm install -g openclaw
+    ```
+2.  Copy your `.env` settings (API keys + Gateway Token) to your Windows user home:
+    ```powershell
+    mkdir $HOME\.openclaw
+    copy openclaw\.env $HOME\.openclaw\.env
+    ```
+
+### 3. Verify Connection
+Once the tunnel is up and config is copied:
+
+1.  **Browser Check**: Open [http://localhost:18789](http://localhost:18789). You should see the OpenClaw dashboard.
+2.  **CLI Check**:
+    ```powershell
+    openclaw agent --message "System check: are you online?"
+    ```
+
 ## Useful Commands
 
 *   **Connect to Mac Mini**: `ssh -i ssh_keys/id_ed25519 miniboli@192.168.254.117`
