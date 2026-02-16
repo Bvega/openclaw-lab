@@ -1,0 +1,21 @@
+{
+    "gateway": {
+        "mode": "local",
+        "bind": "lan",
+        "auth": {
+            "mode": "token",
+            "token": "${OPENCLAW_GATEWAY_TOKEN}"
+        },
+        "controlUi": {
+            "enabled": true,
+            "allowInsecureAuth": true
+        }
+    },
+    "agents": {
+        "defaults": {
+            "model": {
+                "primary": "anthropic/claude-3-5-sonnet-20241022"
+            }
+        }
+    }
+}

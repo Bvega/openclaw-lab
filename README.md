@@ -63,31 +63,32 @@ antigravity
 
 To interact with your Mac Mini (Brain) from your Windows Laptop (Control Center), follow these steps:
 
-### 1. Establish Secure Connection (SSH Tunnel)
-The OpenClaw Gateway listens on `localhost:18789` on the Mac Mini for security. To access it from Windows, create an SSH tunnel.
+### 1. Direct LAN Access
+The OpenClaw Gateway is configured to listen on the LAN interface `0.0.0.0` (port 18789) on the Mac Mini. You can access it directly from your Windows Laptop without an SSH tunnel.
 
-Run this in a separate terminal window (and keep it open):
-```powershell
-ssh -N -L 18789:localhost:18789 -i ssh_keys/id_ed25519 miniboli@192.168.254.117
-```
-*(This forwards your local Windows port 18789 to the Mac Mini's port 18789)*
+**Dashboard URL:**
+[http://192.168.254.117:18789](http://192.168.254.117:18789)
 
-### 2. Configure Local Client (Windows)
-Ensure your local CLI uses the same authentication token as the server.
-1.  Install the CLI globally (if not already):
+*(Note: Local access requires authentication. Use the token provided in your `.env` file or use the Magic Link generated during setup.)*
+
+### 2. Configure Local Client (Windows CLI)
+To use the `openclaw` command-line tool from Windows:
+
+1.  Install the CLI globally:
     ```powershell
     npm install -g openclaw
     ```
-2.  Copy your `.env` settings (API keys + Gateway Token) to your Windows user home:
+2.  Configure CLI to point to the remote gateway:
     ```powershell
-    mkdir $HOME\.openclaw
-    copy openclaw\.env $HOME\.openclaw\.env
+    # Set the remote URL in your local config or environment
+    $env:OPENCLAW_GATEWAY_URL="http://192.168.254.117:18789"
+    $env:OPENCLAW_GATEWAY_TOKEN="<your-token>"
     ```
 
 ### 3. Verify Connection
-Once the tunnel is up and config is copied:
+Once configured:
 
-1.  **Browser Check**: Open [http://localhost:18789](http://localhost:18789). You should see the OpenClaw dashboard.
+1.  **Browser Check**: Open [http://192.168.254.117:18789](http://192.168.254.117:18789). You should see the OpenClaw dashboard.
 2.  **CLI Check**:
     ```powershell
     openclaw agent --message "System check: are you online?"
