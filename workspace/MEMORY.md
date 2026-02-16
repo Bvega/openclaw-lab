@@ -14,4 +14,5 @@
 - SSH keys: NOT SET UP
 - NAS mount: UNVERIFIED
 - Jetson: UNVERIFIED
-- Memory search (embeddings): BROKEN — needs API key config
+- Memory search (embeddings): WORKING ✅ (OpenAI text-embedding-3-small)
+- SSH key generated: ~/.ssh/id_ed25519 (not yet added to GitHub)
