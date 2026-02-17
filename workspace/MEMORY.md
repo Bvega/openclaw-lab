@@ -15,4 +15,4 @@
 - NAS mount: UNVERIFIED
 - Jetson: UNVERIFIED
 - Memory search (embeddings): WORKING ✅ (OpenAI text-embedding-3-small)
-- SSH key generated: ~/.ssh/id_ed25519 (not yet added to GitHub)
+- SSH key generated: ~/.ssh/id_ed25519 — added to GitHub ✅
